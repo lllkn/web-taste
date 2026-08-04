@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web Taste"
+  short_description: "Confirm, visualize, remember, and apply web taste"
+  default_prompt: "Use $web-taste to confirm what I want learned, show me a visual evidence board, remember approved principles, and apply them after I choose the direction."

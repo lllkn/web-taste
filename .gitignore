@@ -1,0 +1,11 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+
+# Personal taste knowledge and captured evidence stay local.
+web-taste/references/sites/*
+!web-taste/references/sites/.gitkeep
+web-taste/references/reports/*
+!web-taste/references/reports/.gitkeep
+web-taste/references/applications/*
+!web-taste/references/applications/.gitkeep
