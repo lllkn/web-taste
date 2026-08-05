@@ -1,5 +1,73 @@
 # Web Taste
 
+**Teach your coding agent your taste, not a template.**
+
+Web Taste is a Codex skill that learns transferable design decisions from real websites, turns them into visual evidence, remembers only what you approve, and applies that memory to new interfaces.
+
+It does not copy a reference site's identity, assets, code, or isolated CSS values. It learns the relationships behind the design: hierarchy, rhythm, proportion, color roles, component grammar, interaction states, responsive recomposition, and motion logic.
+
+[中文说明](#中文说明) · [Quick start](#quick-start) · [See the results](#它能做出什么)
+
+![Web Taste learns from reference interfaces, visualizes evidence, remembers approved decisions, and applies that memory to distinct outcomes](docs/images/web-taste-demo.gif)
+
+*Learn from references, review visual evidence, approve what gets remembered, then apply that memory to new briefs.*
+
+## Why Web Taste
+
+Most frontend design prompts produce a one-off result. Web Taste builds a reviewable visual memory that improves through explicit decisions:
+
+- **Evidence before opinion** — inspect rendered desktop, mobile, interaction, and motion states instead of guessing from source code.
+- **Approval before memory** — show a Visual Taste Board and store only the principles the user accepts.
+- **Context before reuse** — retrieve only the memories that fit the new audience, content, function, and emotional goal.
+- **Choice before propagation** — compare meaningful component directions before applying one across the interface.
+- **Relationships over imitation** — transfer hierarchy and design logic without copying brand identity, proprietary assets, or source code.
+
+## Quick start
+
+Ask Codex to install the skill:
+
+```text
+Install the web-taste skill from https://github.com/lllkn/web-taste.
+```
+
+Then learn from a reference website:
+
+```text
+Use $web-taste to learn the typography, layout, components, responsive behavior,
+and motion from https://example.com. Show me a Learn Brief before deep inspection,
+then present a Visual Taste Board and remember only what I approve.
+```
+
+Or apply your existing taste memory to a project:
+
+```text
+Use $web-taste to redesign this frontend. Start with an Application Brief and a
+Memory Fusion Note, let me choose consequential component directions, then implement
+and verify the result on desktop and mobile.
+```
+
+## How it works
+
+```text
+Reference websites
+        ↓
+Rendered evidence + Visual Taste Board
+        ↓
+User approval, correction, or rejection
+        ↓
+Traceable taste memory
+        ↓
+Application Brief + Memory Fusion Note
+        ↓
+Component choices → implementation → responsive verification
+```
+
+The confirmation gates are intentional. A submitted URL is not automatically treated as an endorsement, and a remembered preference is not blindly applied to every product.
+
+---
+
+## 中文说明
+
 让你的 AI 逐步形成自己的网页审美：从真实网页中学习前端视觉语言，把经过确认的设计规律沉淀为 taste memory，再复用到新的网页、组件和产品中。
 
 Web Taste 不是一个“照抄参考站”的工具。它关注可迁移的关系，例如信息层级、排版节奏、空间比例、色彩职责、组件语法、交互状态、响应式重组和动效逻辑，同时明确排除品牌标识、专有素材、原站代码与其他不可复用内容。
