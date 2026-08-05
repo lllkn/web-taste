@@ -2,6 +2,9 @@
 
 **Teach your coding agent your taste, not a template.**
 
+[![CI](https://github.com/lllkn/web-taste/actions/workflows/ci.yml/badge.svg)](https://github.com/lllkn/web-taste/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Web Taste is a Codex skill that learns transferable design decisions from real websites, turns them into visual evidence, remembers only what you approve, and applies that memory to new interfaces.
 
 It does not copy a reference site's identity, assets, code, or isolated CSS values. It learns the relationships behind the design: hierarchy, rhythm, proportion, color roles, component grammar, interaction states, responsive recomposition, and motion logic.
@@ -24,7 +27,13 @@ Most frontend design prompts produce a one-off result. Web Taste builds a review
 
 ## Quick start
 
-Ask Codex to install the skill:
+Install globally for Codex with the Agent Skills CLI:
+
+```bash
+npx skills add lllkn/web-taste --skill web-taste -g -a codex -y
+```
+
+Or ask Codex to install it:
 
 ```text
 Install the web-taste skill from https://github.com/lllkn/web-taste.
@@ -133,6 +142,12 @@ Web Taste 不是一个“照抄参考站”的工具。它关注可迁移的关�
 4. 实现并验证桌面端、移动端、交互与可访问性。
 
 ## 安装
+
+### 使用 Agent Skills CLI（推荐）
+
+```bash
+npx skills add lllkn/web-taste --skill web-taste -g -a codex -y
+```
 
 ### 让 Codex 安装
 
