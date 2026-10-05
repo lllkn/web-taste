@@ -1,114 +1,78 @@
 ---
 name: web-taste
-description: Learn, visualize, confirm, store, and apply reusable frontend visual taste from reference webpage URLs. Use when a user asks to study, learn, save, imitate, or apply a website's style, layout, UI, typography, components, art direction, motion, or responsive behavior; when prior taste cases should inform a frontend; or when several component directions should be rendered for user choice.
+description: Learn transferable design relationships from reference webpages, visualize evidence, remember explicitly approved preferences, and apply relevant taste memory to interfaces. Use for learning a reference site's visual system or designing with previously saved taste. Ordinary frontend implementation or component comparison without reference learning or taste memory does not require this skill.
 ---
 
 # Web Taste
 
-Turn webpage references into an evidence-backed taste system and apply that system through explicit user decisions. Learn transferable relationships and constraints, never a site's identity or copied CSS values.
+Turn reference webpages into traceable design evidence and scoped user preferences. Transfer hierarchy, rhythm and interaction relationships while preserving the target's content, functionality and established conventions.
 
-## Choose a mode
+## Runtime portability
 
-- **Learn**: inspect references, report the findings visually, obtain user review, and store the result.
-- **Apply**: confirm the target need, retrieve relevant memories, resolve choices, implement, and verify.
-- **Learn and apply**: complete every Learn gate before starting every Apply gate.
+This is a portable Agent Skill. Use the host's file, terminal and browser capabilities; do not assume Codex-specific tool names or invocation syntax. `agents/openai.yaml` is optional Codex UI metadata, not a runtime dependency. For installation, host invocation or access troubleshooting, read [agent-compatibility.md](references/agent-compatibility.md).
 
-Read [workflow-artifacts.md](references/workflow-artifacts.md) for the required briefs, visual schemas, confirmation language, and decision records. For Learn mode also read [visual-analysis-rubric.md](references/visual-analysis-rubric.md) and [site-record-template.md](references/site-record-template.md). For Apply mode also read [taste-profile.md](references/taste-profile.md) and [site-index.md](references/site-index.md), then open only the 2-4 most relevant source records.
+Before starting, check the capabilities actually available in this session:
 
-## Non-negotiable gates
+- Bundled scripts require Python 3.9+ and filesystem access. Resolve a working interpreter (`python3`, `python`, or `py -3`) and substitute it in the examples. Python and browser tools are separate capabilities.
+- Interactive browser plus local captures enables state/responsive inspection; computed-style access enables measurements. Use the available browser/MCP integration only within the host's permissions.
+- Screenshot inputs without browser control support visible observations; mark interactions and unavailable measurements unknown. Do not infer interactive behavior from static captures.
+- Without rendered evidence, deliver a draft with explicit gaps. Without Python execution, provide analysis and a review proposal; defer helper-based persistence until a compatible runtime is available. Applying readable existing memory can still proceed.
+- Use the host's attachment/preview mechanism to present HTML when available; otherwise provide the local artifact path and a concise summary or accessible screenshots. Do not publish a report just to display it.
 
-1. Do not deeply inspect a submitted URL until the user confirms the Learn Brief.
-2. Do not promote findings into the taste profile until the user reviews the Visual Taste Board.
-3. Do not implement or restyle a target until the user confirms the Application Brief and proposed memory fusion.
-4. When a consequential component has multiple coherent directions, render 2-3 comparable options and wait for the user's choice before propagating one through the design.
+The same local library can be used from different agents by choosing the same absolute `WEB_TASTE_LIBRARY_ROOT`. A remote or cloud session needs its own accessible data location; local installation does not imply cloud availability. Use one writer at a time for a shared library.
 
-Treat a clear answer in the user's original request as confirmation; do not ask again for information already supplied. A gate pauses work only when a material choice remains unresolved.
+## Route the task
 
-## Learn workflow
+- **Learn**: inspect the requested reference and present visual evidence. Save preferences only when explicitly approved.
+- **Apply**: inspect the target and retrieve relevant approved memory, then implement and verify.
+- **Learn and apply**: share one scope brief; inspect references, propose the relevant relationships, and proceed with implementation when the user has authorized the direction. Review durable memory changes separately.
 
-### 1. Quick scan
+For Learn read [visual-analysis-rubric.md](references/visual-analysis-rubric.md) and the relevant Board/review sections of [workflow-artifacts.md](references/workflow-artifacts.md). For Apply read its brief, fusion, comparison and verification sections. Read [site-record-template.md](references/site-record-template.md) only when saving a source record. Do not load all resources for every task.
 
-Open the URL in a real rendered browser and perform only a bounded reconnaissance pass. Confirm the final URL, page identity, content purpose, probable page type, broad visual character, and whether authentication or overlays block inspection. Do not yet perform exhaustive DOM measurement, interaction traversal, full-page capture, or preference promotion.
+## Scope and user decisions
 
-Report the quick scan in 3-5 concrete sentences, then prepare a Learn Brief covering:
+Treat scope and choices already clear in the user's request as authorization; do not ask the user to repeat them. Prepare a short brief stating the meaningful assumptions and proceed when the task is clear. Ask only about missing decisions that materially affect the result. Combine related questions and do independent work while awaiting answers.
 
-- learning focus: layout, hierarchy, typography, color, imagery, surfaces, components, interaction, responsive behavior, motion, or the whole system;
-- page scope: current page, named sections, or a broader site journey;
-- viewport and state scope: desktop, mobile, hover, focus, menus, dialogs, media, scroll, and transitions as applicable;
-- exclusions and whether the result should enter the persistent library.
+Keep three decisions distinct: permission to inspect or implement, a consequential visual choice, and approval to save a durable preference. A submitted URL, approval of an analysis, or a one-project component choice does not automatically endorse every observed trait for future projects. Multiple independent sources increase observation confidence, never user approval.
 
-Ask the user to confirm or amend the brief. Wait when these choices are not already explicit.
+When the user wants to choose a consequential direction, render 2–3 comparable options and wait for that choice. When the user delegates design decisions, recommend and implement a coherent direction without manufacturing another gate. State the resulting decisions with the reviewable output.
 
-### 2. Deep inspection
+## Locate tools and private data
 
-After confirmation, inspect the rendered page at desktop and mobile sizes when responsive. Capture first viewport and full-page evidence separately. Exercise meaningful hover, focus, menu, tab, modal, scroll, loading, and transition states within the confirmed scope.
-
-Gather computed styles and geometry for representative elements. Classify evidence under composition and hierarchy, typography, color/imagery/surfaces, spacing and geometry, components and interaction, responsive behavior, and motion. Label every important statement as observed, measured, interpreted, or unknown. Never infer an interaction that can be exercised.
-
-### 3. Visual report and review
-
-Create a Visual Taste Board, not a text-only summary. Use screenshots or crops, a layout skeleton, role-labelled color swatches, a typography ladder, spacing/geometry samples, component states, desktop/mobile comparisons, and a motion sequence where evidence exists. Every reusable principle must include evidence, confidence, use conditions, avoid conditions, and an implementation cue.
-
-Use `python3 scripts/render_visual.py taste-board INPUT.json OUTPUT.html` for a self-contained report when a file artifact is appropriate. Present the board to the user and summarize:
-
-- what was observed;
-- what was inferred;
-- the 3-6 transferable relationships;
-- source-specific elements that must not be copied;
-- gaps or uncertainty;
-- proposed additions, conditional preferences, and exclusions for the taste profile.
-
-Ask the user to approve, correct, reject, or narrow the findings. Do not silently treat the submitted URL as endorsement.
-
-### 4. Persist reviewed learning
-
-Create or update a source record in `references/sites/` only with traceable provenance. Store the confirmed Learn Brief, report path, review state, user corrections, evidence, reusable principles, boundaries, and confidence. Use `python3 scripts/taste_library.py new ...` for a scaffold.
-
-Promote a preference into [taste-profile.md](references/taste-profile.md) only when the user explicitly endorses it or multiple independent sources support it. Keep one-off findings conditional. Record contradictions as contextual alternatives, direct rejections as exclusions, and user corrections at higher confidence than inference.
-
-Run:
+Resolve this `SKILL.md` directory to an absolute path, represented below by `WEB_TASTE_SKILL`. Call scripts using that path even when working in a different project. Do not assume the target's `scripts/` belongs to this skill.
 
 ```bash
-python3 scripts/taste_library.py index
-python3 scripts/taste_library.py validate
+python3 "${WEB_TASTE_SKILL}/scripts/taste_library.py" root
+python3 "${WEB_TASTE_SKILL}/scripts/taste_library.py" --library-root /absolute/user/library init
 ```
 
-If access is blocked, do not fabricate. Report the missing evidence and request screenshots, exports, recordings, or an accessible equivalent.
+The default library is `$WEB_TASTE_LIBRARY_ROOT` when set, otherwise `${XDG_DATA_HOME:-~/.local/share}/web-taste`. `--library-root` overrides it and must appear before the subcommand. Read the resolved library's `taste-profile.md` and `site-index.md`; files of those names shipped in `references/` are empty initialization templates, not user memory. Scripts reject writes inside the skill installation.
 
-## Apply workflow
+For an older library inside a skill's `references/`, use `migrate --from /absolute/old/references` with the chosen data root. It backs up and copies records, preserves the source, repairs internal absolute report paths, and refuses conflicts. Imported summaries remain `legacy-profile.md` until explicit principles are reviewed; they are not silently promoted. See [workflow-artifacts.md](references/workflow-artifacts.md#library-commands) for commands.
 
-### 1. Confirm the Application Brief
+## Learn
 
-Inspect the target repository, product audience, content, assets, framework, functionality, and existing design system. Prepare an Application Brief with the product goal, target users, page/component scope, functional constraints, accessibility requirements, content shape, desired emotional character, taste influence strength, exclusions, deliverable, and validation target.
+1. Open the reference in a rendered browser. Check page identity, final URL, content purpose and access limits. State a concise Learn Brief with focus, page/state scope, viewports, exclusions and persistence choice. Clarify only material gaps.
+2. Inspect representative elements and meaningful states within that scope. Compare desktop/mobile when applicable; capture first viewport and full-page evidence separately when useful. Collect computed styles and geometry only when the browser exposes them. If it does not, mark visual estimates as interpreted, not measured. Do not fabricate inaccessible states.
+3. Render a Visual Taste Board with `render_visual.py taste-board INPUT.json OUTPUT.html`. Include the in-scope screenshots, hierarchy/layout, typography, color roles, geometry, responsive comparisons, states and motion. Use stable evidence and principle IDs. Link each reusable principle to observed/measured evidence and state confidence, use/avoid conditions and an implementation cue.
+4. Mark a board `draft` or `incomplete` with explicit gaps when evidence is insufficient. Such reports cannot authorize durable principles. Show the report and distinguish observations, interpretations, transferable relationships and source-specific boundaries.
+5. Save source observations to the private library when the user requested persistence. Complete `TODO:` fields or mark the dimension explicitly out of scope. Set source review status honestly after review; report approval alone does not create positive taste memory.
+6. For each explicit approval or rejection, run `taste_library.py review` with its source ID, principle ID, `global` or `project:name` scope and the user's actual words. `review` retains the evidence snapshot and regenerates the profile. Use `revoked` when the user withdraws a recorded decision. Never invent approval wording or generalize a project choice into global taste.
 
-Ask the user to confirm or amend it before styling or implementation. Use `python3 scripts/taste_library.py new-application ...` when the application should be recorded persistently.
+If access is blocked, produce a limited report with gaps, or request an accessible reference, screenshots or recordings when needed. A screenshot supports visible facts, not unexercised interactions.
 
-### 2. Retrieve and fuse memory
+## Apply
 
-Read the concise taste profile and source index. Select only 2-4 relevant records by product type, information density, interaction model, content shape, and emotional goal. Do not combine every favorite trait.
+1. Inspect the repository, audience, content, assets, functionality, framework and existing design system. State a short Application Brief with goal, scope, constraints, intended character, influence strength, deliverable and verification target. Proceed when the request already resolves these choices.
+2. Read the private profile and run `taste_library.py search --query "task keywords" --scope project:name`. Search returns explicitly approved, scoped principles and exclusions; pending/rejected sources are not positive memory. Project-specific decisions take precedence over global decisions for the same principle. Read only the best-fitting source records, up to four; never fill a quota.
+3. If the library is empty or no memory fits, work from the current brief and established design system. State that no historical memory supports the direction. Do not invent preferences or block implementation merely to collect more references. One relevant source is sufficient.
+4. Present a concise Memory Fusion Note: which relationship fits the target, what is excluded and how conflicts are resolved. Prioritize the user's current requirements, usability and existing conventions. Ask only about unresolved consequential choices; otherwise state a design thesis and derive coherent tokens and components.
+5. When comparison is requested or needed for a user's choice, use identical content, states and viewport dimensions. Prefer screenshots of actual components; HTML previews are isolated in sandboxed iframes and support static/CSS states only. A click in the comparison page changes display state, not persistent approval; record a choice after the user communicates it.
+6. Implement and verify the rendered desktop/mobile result, hierarchy, wrapping, overflow, contrast, keyboard/focus behavior, relevant states, reduced motion and existing functionality. State verified evidence and remaining gaps. Record project decisions in `applications/`; save new durable preferences only with explicit scoped endorsement.
 
-Present a short Memory Fusion Note before implementation. Name each selected source, what relationship it contributes, why it fits, what is excluded, and any conflict. Resolve conflicts in favor of usability, the confirmed brief, and the target's established conventions. Ask for confirmation together with the Application Brief when possible.
+## Invariants
 
-After confirmation, write a design thesis covering product character, hierarchy, spatial rhythm, typography role, color behavior, surface treatment, component grammar, and motion behavior. Derive coherent tokens and relationships; adapt exact values to the target.
-
-### 3. Resolve component choices
-
-Trigger a choice when 2-3 materially different directions are all plausible and the decision affects hierarchy, repeated components, interaction grammar, or later implementation. Do not interrupt for trivial size or color variations.
-
-Render the options with identical content, dimensions, state coverage, and viewport context. Label the differences and tradeoffs without presenting one as secretly complete. Use `python3 scripts/render_visual.py component-choice INPUT.json OUTPUT.html` for a lightweight comparison. Ask the user to choose or combine explicit aspects, then record the choice, rationale, rejected alternatives, scope, and source influences in the application record.
-
-### 4. Implement and verify
-
-Implement real states and responsive behavior while preserving functionality. Use assets that reveal the actual product or subject. Remove generic styling with no support in the confirmed brief or selected influences.
-
-Compare the rendered result at desktop and mobile sizes. Verify hierarchy at a glance, wrapping, overflow, alignment, contrast, keyboard/focus behavior, interactive states, reduced-motion behavior, and consistency with the chosen component direction. Report verified evidence and remaining gaps.
-
-Store explicit post-implementation corrections as decision evidence. Promote them to durable taste only when the same endorsement rules are met.
-
-## Learning rules
-
-- Prefer relationships over coordinates: ratios, rhythm, alignment logic, contrast hierarchy, and transition grammar transfer better than isolated values.
-- Preserve source provenance and distinguish observed facts from interpretations.
-- Keep durable taste separate from situational solutions.
-- Never copy logos, trademarks, proprietary text, custom illustrations, photos, icons, font files, or source code.
-- Keep [taste-profile.md](references/taste-profile.md) concise. Move detailed evidence into source records instead of bloating the profile.
+- Separate observed, measured, interpreted and unknown evidence. Confidence describes evidence quality, not strength of user preference.
+- Keep provenance and contextual boundaries; record partial approval and rejection at principle level.
+- Preserve the user's chosen framework, design system and authorized assets. Do not copy third-party identity, proprietary assets or source code without authorization; use user-owned or otherwise authorized resources within the request.
+- Keep runtime data outside the distributed skill. Rebuild the index and run `taste_library.py validate` after changing library records. Validation checks structure and evidence links, not actual browser fidelity or human approval.

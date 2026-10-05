@@ -24,5 +24,8 @@ jobs:
       - name: Run workflow regression tests
         run: python3 web-taste/scripts/test_workflow.py
 
-      - name: Validate the public taste library
-        run: python3 web-taste/scripts/taste_library.py validate
+      - name: Initialize an isolated taste library
+        run: python3 web-taste/scripts/taste_library.py --library-root "$RUNNER_TEMP/web-taste-library" init
+
+      - name: Validate the initialized taste library
+        run: python3 web-taste/scripts/taste_library.py --library-root "$RUNNER_TEMP/web-taste-library" validate

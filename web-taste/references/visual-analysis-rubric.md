@@ -9,6 +9,8 @@ Use this rubric to produce observations that are specific enough to guide implem
 - **Interpreted**: a reasoned explanation of intent or effect. Keep it visibly separate from observed facts.
 - **Unknown**: inaccessible or ambiguous. State the gap rather than guessing.
 
+Observation confidence measures evidence quality, not user endorsement. Assign stable IDs to captured observations and link principles to them. When computed-style access is unavailable, record visual estimates as interpreted rather than measured.
+
 ## Composition and hierarchy
 
 Inspect:
